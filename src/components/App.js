@@ -1,13 +1,11 @@
-function App() {
+import { Users } from './Users/Users';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          EdiDFDFDFt <code>src/App.js</code> and save OOOfffPPPP reload.
-        </p>
-      </header>
+    <div>
+      <Users />
     </div>
   );
-}
+};
 
 export default App;
