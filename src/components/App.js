@@ -3,7 +3,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          EdiDFDFDFt <code>src/App.js</code> and save OOOPPPP reload.
+          EdiDFDFDFt <code>src/App.js</code> and save OOOfffPPPP reload.
         </p>
       </header>
     </div>
