@@ -1,3 +1,10 @@
+:root {
+  --primary: rgb(55, 55, 55);
+  --second: rgb(235, 216, 255);
+  --shadow: rgb(235, 216, 255, 0.5);
+  --button: rgba(87, 54, 163, 1);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +17,51 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px var(--shadow);
+}
+
+p {
+  margin-bottom: 5px;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  display: block;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  /* background-color: rgb(51, 51, 51); */
+}
+
+a {
+  text-decoration: none;
 }
