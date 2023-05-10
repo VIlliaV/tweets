@@ -20,7 +20,6 @@ const Users = () => {
           if (!results.length)
             throw new Error('немає ні одного юзера на сервері');
           setUsers(results);
-          console.log(results);
         })
         .catch(error => {
           toast.error(`${error.message}`);
@@ -29,7 +28,6 @@ const Users = () => {
   }, []);
 
   const isLoadMore = cardOnPage < users.length;
-  console.log('🚀 ~ isLoadMore:', isLoadMore);
 
   return (
     <Container>
