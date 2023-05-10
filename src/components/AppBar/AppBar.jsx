@@ -8,7 +8,10 @@ export const AppBar = () => {
           <NavStyle to="/">Home</NavStyle>
         </li>
         <li>
-          <NavStyle to="users">tweets</NavStyle>
+          <NavStyle to="/users">tweets</NavStyle>
+        </li>
+        <li>
+          <NavStyle to="/test">test</NavStyle>
         </li>
       </ul>
     </Container>
