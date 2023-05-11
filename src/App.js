@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Layout } from './components/Layout/Layout';
 import { lazy } from 'react';
@@ -6,7 +6,7 @@ import { lazy } from 'react';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Users = lazy(() => import('pages/Users/Users'));
-const Test = lazy(() => import('pages/Test/Test'));
+// const Test = lazy(() => import('pages/Test/Test'));
 
 const App = () => {
   return (
@@ -14,9 +14,9 @@ const App = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="users" element={<Users />} />
-        <Route path="/test" element={<Test />} />
+        {/* <Route path="test" element={<Test />} /> */}
       </Route>
-      {/* <Route path="*" element={<Navigate to="/" />} /> */}
+      <Route path="*" element={<Navigate to="/" />} />?
     </Routes>
   );
 };
