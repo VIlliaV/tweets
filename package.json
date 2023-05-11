@@ -2,7 +2,7 @@
   "name": "tweets",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://VIlliaV.github.io/tweets",
+  "homepage": "https://VIlliaV.github.io/tweets/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^13.4.0",
