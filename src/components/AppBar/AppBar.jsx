@@ -10,9 +10,6 @@ export const AppBar = () => {
         <li>
           <NavStyle to="users">tweets</NavStyle>
         </li>
-        {/* <li>
-          <NavStyle to="/test">test</NavStyle>
-        </li> */}
       </ul>
     </Container>
   );

@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import { Container } from './Users.styled';
 
 const PAGINATION = 3;
-// import { List } from './Users.styled';
+
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [cardOnPage, setCardOnPage] = useState(PAGINATION);
