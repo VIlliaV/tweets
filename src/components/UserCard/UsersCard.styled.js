@@ -91,6 +91,8 @@ export const Card = styled.li`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 196px;
+    height: 50px;
     padding: 14px 28px;
     gap: 6px;
     margin-top: 20px;
