@@ -1,7 +1,7 @@
 import noAvatar from 'assets/noAvatar.png';
 import { Card } from './UsersCard.styled';
 import { useEffect, useRef, useState } from 'react';
-import Button from 'components/Button/Button';
+import Button from 'components/Buttons/Button/Button';
 
 export const UserCard = ({ userInfo }) => {
   const { id, avatar, followers, tweets } = userInfo;

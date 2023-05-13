@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Container } from './Users.styled';
 import SideMenu from 'components/SideMenu/SideMenu';
-import Button from 'components/Button/Button';
+import Button from 'components/Buttons/Button/Button';
 
 const PAGINATION = 3;
 

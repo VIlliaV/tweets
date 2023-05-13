@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Aside, StyledSelect } from './SideMenu.styled';
-import Button from 'components/Button/Button';
+// import Button from 'components/Buttons/Button/Button';
+import BackToPage from 'components/Buttons/BackToPage/BackToPage';
+// import { useLocation } from 'react-router-dom';
 
 const SideMenu = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -10,13 +12,16 @@ const SideMenu = () => {
     { value: 'follow', label: 'follow' },
     { value: 'following', label: 'following' },
   ];
+
+  //   const backToPage =
+
   const handleChange = option => {
     setSelectedOption(option);
   };
   //   const color = 'var(--button)';
   return (
     <Aside>
-      <Button>back</Button>
+      <BackToPage />
       <StyledSelect
         value={selectedOption}
         onChange={handleChange}

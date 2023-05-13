@@ -5,6 +5,7 @@ export const Aside = styled.aside`
   position: fixed;
   left: 0;
   padding: 15px;
+  min-width: 150px;
 
   & Button {
     width: auto;
@@ -26,9 +27,6 @@ export const StyledSelect = styled(Select)`
   border: 2px outset var(--primary);
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10.3108px;
-  /* &[data-isfollow='true'] {
-      background: #5cd3a8;
-    } */
   cursor: pointer;
   :hover {
     background: var(--shadow);
