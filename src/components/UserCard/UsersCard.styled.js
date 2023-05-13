@@ -86,7 +86,7 @@ export const Card = styled.li`
     margin-top: 62px;
     margin-bottom: 16px;
   }
-  & button {
+  /* & button {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -112,5 +112,5 @@ export const Card = styled.li`
     :hover {
       background: var(--shadow);
     }
-  }
+  } */
 `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const Container = styled.div`
+export const Container = styled.nav`
   position: fixed;
   display: block;
   width: 100%;

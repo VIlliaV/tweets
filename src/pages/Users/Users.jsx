@@ -3,6 +3,8 @@ import { UserCard } from 'components/UserCard/UserCard';
 import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Container } from './Users.styled';
+import SideMenu from 'components/SideMenu/SideMenu';
+import Button from 'components/Button/Button';
 
 const PAGINATION = 3;
 
@@ -31,14 +33,19 @@ const Users = () => {
 
   return (
     <Container>
-      <ul>
-        {users.slice(0, cardOnPage).map(user => (
-          <UserCard key={user.id} userInfo={user} />
-        ))}
-      </ul>
-      {isLoadMore && (
-        <button onClick={() => setCardOnPage(cardOnPage + 3)}>LOAD MORE</button>
-      )}
+      <SideMenu />
+      <div className="users_cards">
+        <ul>
+          {users.slice(0, cardOnPage).map(user => (
+            <UserCard key={user.id} userInfo={user} />
+          ))}
+        </ul>
+        {isLoadMore && (
+          <Button onClick={() => setCardOnPage(cardOnPage + 3)}>
+            LOAD MORE
+          </Button>
+        )}
+      </div>
     </Container>
   );
 };

@@ -1,6 +1,7 @@
 import noAvatar from 'assets/noAvatar.png';
 import { Card } from './UsersCard.styled';
 import { useEffect, useRef, useState } from 'react';
+import Button from 'components/Button/Button';
 
 export const UserCard = ({ userInfo }) => {
   const { id, avatar, followers, tweets } = userInfo;
@@ -38,9 +39,9 @@ export const UserCard = ({ userInfo }) => {
       <span className="circle" />
       <p className="tweets"> {tweets} TWEETS</p>
       <p className="followers">{sumFollowersAndFollow} FOLLOWERS</p>
-      <button type="button" onClick={handleFollow} data-isfollow={follow}>
+      <Button type="button" onClick={handleFollow} data-isfollow={follow}>
         {follow ? 'FOLLOWING' : 'FOLLOW'}
-      </button>
+      </Button>
     </Card>
   );
 };
