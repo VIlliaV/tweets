@@ -4,7 +4,7 @@ import { Aside, StyledSelect } from './SideMenu.styled';
 import BackToPage from 'components/Buttons/BackToPage/BackToPage';
 // import { useLocation } from 'react-router-dom';
 
-const SideMenu = () => {
+const SideMenu = ({ choice }) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const options = [
@@ -13,12 +13,11 @@ const SideMenu = () => {
     { value: 'following', label: 'following' },
   ];
 
-  //   const backToPage =
-
   const handleChange = option => {
     setSelectedOption(option);
+    choice(option);
   };
-  //   const color = 'var(--button)';
+
   return (
     <Aside>
       <BackToPage />

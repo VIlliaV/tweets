@@ -12,6 +12,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const [cardOnPage, setCardOnPage] = useState(PAGINATION);
   const firstRender = useRef(true);
+  const [filter, setFilter] = useState(users);
 
   useEffect(() => {
     if (firstRender.current) {
@@ -22,6 +23,7 @@ const Users = () => {
           if (!results.length)
             throw new Error('немає ні одного юзера на сервері');
           setUsers(results);
+          setFilter(results);
         })
         .catch(error => {
           toast.error(`${error.message}`);
@@ -31,9 +33,36 @@ const Users = () => {
 
   const isLoadMore = cardOnPage < users.length;
 
+  const filterIsFollow = option => {
+    const localData = JSON.parse(localStorage.getItem('isFollowing'));
+    console.log('🚀 ~ option.label:', option.label);
+    switch (option.label) {
+      case 'all':
+        setFilter(users);
+        break;
+      case 'follow':
+        const filterLocal = users.filter(user =>
+          localData.find(data => data.id === user.id)
+        );
+        console.log('🚀 ~ filterLocal:', filterLocal);
+
+        setFilter(filterLocal);
+        break;
+
+      case 'following':
+        // const filter = users.filter(user => user.id !== localData.id);
+        setFilter(localData);
+        break;
+      default:
+        break;
+    }
+  };
+
+  console.log('filter :>> ', filter);
+
   return (
     <Container>
-      <SideMenu />
+      <SideMenu choice={filterIsFollow} />
       <div className="users_cards">
         <ul>
           {users.slice(0, cardOnPage).map(user => (

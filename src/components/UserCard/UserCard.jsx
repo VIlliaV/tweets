@@ -20,7 +20,7 @@ export const UserCard = ({ userInfo }) => {
     setFollow(!follow);
     followData.current = JSON.parse(localStorage.getItem(`isFollowing`)) || [];
     if (follow === false) {
-      followData.current.push({ id, isFollow: true });
+      followData.current.push({ ...userInfo, isFollow: true });
       localStorage.setItem(`isFollowing`, JSON.stringify(followData.current));
     } else {
       const deleteFollow = followData.current.filter(obj => obj.id !== id);

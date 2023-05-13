@@ -5,7 +5,7 @@ export const Aside = styled.aside`
   position: fixed;
   left: 0;
   padding: 15px;
-  min-width: 150px;
+  min-width: 163.7px;
 
   & Button {
     width: auto;

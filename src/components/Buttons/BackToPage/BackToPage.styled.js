@@ -10,6 +10,6 @@ export const NavLinkStyle = styled(Link)`
   color: var(--second);
   padding: 10px;
   background-color: var(--button);
-  border: 1px solid var(--second);
+  border: 1px solid var(--primary);
   border-radius: 5px;
 `;
