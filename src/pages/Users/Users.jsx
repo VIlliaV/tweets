@@ -31,41 +31,44 @@ const Users = () => {
     }
   }, []);
 
-  const isLoadMore = cardOnPage < users.length;
+  const isLoadMore = filter.length > cardOnPage && cardOnPage < filter.length;
 
   const filterIsFollow = option => {
     const localData = JSON.parse(localStorage.getItem('isFollowing'));
-    console.log('🚀 ~ option.label:', option.label);
+    // console.log('🚀 ~ option.label:', option.label);
     switch (option.label) {
       case 'all':
         setFilter(users);
+        setCardOnPage(PAGINATION);
         break;
       case 'follow':
-        const filterLocal = users.filter(user =>
-          localData.find(data => data.id === user.id)
+        const filterLocal = users.filter(
+          user => !localData.find(data => data.id === user.id)
         );
-        console.log('🚀 ~ filterLocal:', filterLocal);
+        // console.log('🚀 ~ filterLocal:', filterLocal);
 
         setFilter(filterLocal);
+        setCardOnPage(PAGINATION);
         break;
 
       case 'following':
         // const filter = users.filter(user => user.id !== localData.id);
         setFilter(localData);
+        setCardOnPage(PAGINATION);
         break;
       default:
         break;
     }
   };
 
-  console.log('filter :>> ', filter);
+  // console.log('filter :>> ', filter);
 
   return (
     <Container>
       <SideMenu choice={filterIsFollow} />
       <div className="users_cards">
         <ul>
-          {users.slice(0, cardOnPage).map(user => (
+          {filter.slice(0, cardOnPage).map(user => (
             <UserCard key={user.id} userInfo={user} />
           ))}
         </ul>

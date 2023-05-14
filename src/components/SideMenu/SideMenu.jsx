@@ -5,7 +5,10 @@ import BackToPage from 'components/Buttons/BackToPage/BackToPage';
 // import { useLocation } from 'react-router-dom';
 
 const SideMenu = ({ choice }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState({
+    value: 'all',
+    label: 'all',
+  });
 
   const options = [
     { value: 'all', label: 'all' },
