@@ -6,25 +6,36 @@ import Button from 'components/Buttons/Button/Button';
 export const UserCard = ({ userInfo }) => {
   const { id, avatar, followers, tweets } = userInfo;
   const [follow, setFollow] = useState(false);
-  const followData = useRef([]);
-  useEffect(() => {
-    followData.current = JSON.parse(localStorage.getItem(`isFollowing`)) || [];
-  }, []);
+  const [followData, setFollowData] = useState([]);
+  const firstRender = useRef(true);
 
   useEffect(() => {
-    const isFollowNow = followData.current.some(obj => obj.id === id);
+    if (firstRender.current) {
+      firstRender.current = false;
+      const test = JSON.parse(localStorage.getItem(`isFollowing`));
+      setFollowData(test || []);
+    } else {
+      localStorage.setItem(`isFollowing`, JSON.stringify(followData));
+    }
+  }, [followData]);
+
+  useEffect(() => {
+    const isFollowNow = followData.some(obj => obj.id === id);
     isFollowNow ? setFollow(true) : setFollow(false);
-  }, [id]);
+  }, [followData, id]);
 
   const handleFollow = () => {
     setFollow(!follow);
-    followData.current = JSON.parse(localStorage.getItem(`isFollowing`)) || [];
+    const local = JSON.parse(localStorage.getItem(`isFollowing`)) || [];
+    setFollowData(JSON.parse(localStorage.getItem(`isFollowing`)) || []);
     if (follow === false) {
-      followData.current.push({ ...userInfo, isFollow: true });
-      localStorage.setItem(`isFollowing`, JSON.stringify(followData.current));
+      setFollowData(prevState => [
+        ...prevState,
+        { ...userInfo, isFollow: true },
+      ]);
     } else {
-      const deleteFollow = followData.current.filter(obj => obj.id !== id);
-      localStorage.setItem(`isFollowing`, JSON.stringify(deleteFollow));
+      const deleteFollow = local.filter(obj => obj.id !== id);
+      setFollowData(deleteFollow);
     }
   };
 

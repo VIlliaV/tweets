@@ -31,7 +31,7 @@ const Users = () => {
     }
   }, []);
 
-  const isLoadMore = filter.length > cardOnPage && cardOnPage < filter.length;
+  const isLoadMore = filter?.length > cardOnPage && cardOnPage < filter?.length;
 
   const filterIsFollow = option => {
     const localData = JSON.parse(localStorage.getItem('isFollowing'));
@@ -43,7 +43,7 @@ const Users = () => {
         break;
       case 'follow':
         const filterLocal = users.filter(
-          user => !localData.find(data => data.id === user.id)
+          user => !localData?.find(data => data.id === user.id)
         );
         // console.log('🚀 ~ filterLocal:', filterLocal);
 
@@ -68,7 +68,7 @@ const Users = () => {
       <SideMenu choice={filterIsFollow} />
       <div className="users_cards">
         <ul>
-          {filter.slice(0, cardOnPage).map(user => (
+          {filter?.slice(0, cardOnPage).map(user => (
             <UserCard key={user.id} userInfo={user} />
           ))}
         </ul>
