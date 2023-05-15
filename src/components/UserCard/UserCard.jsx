@@ -2,9 +2,9 @@ import noAvatar from 'assets/noAvatar.png';
 import { Card } from './UsersCard.styled';
 import { useEffect, useState } from 'react';
 import Button from 'components/Buttons/Button/Button';
-import { getLocalFollow, setLocalFollow } from 'services/Local/local';
+import { getLocalFollow, changeLocalFollow } from 'services/Local/local';
 
-export const UserCard = ({ userInfo }) => {
+export const UserCard = ({ userInfo, rerender }) => {
   const [follow, setFollow] = useState(false);
 
   const { id, avatar, followers, tweets } = userInfo;
@@ -17,10 +17,11 @@ export const UserCard = ({ userInfo }) => {
   const handleFollow = () => {
     setFollow(!follow);
     if (follow === false) {
-      setLocalFollow([...getLocalFollow(), { id, isFollow: true }]);
+      changeLocalFollow([...getLocalFollow(), { id, isFollow: true }]);
     } else {
-      setLocalFollow(getLocalFollow().filter(obj => obj.id !== id));
+      changeLocalFollow(getLocalFollow().filter(obj => obj.id !== id));
     }
+    rerender();
   };
 
   const sumFollowersAndFollow = (followers + follow).toLocaleString('en-US');
