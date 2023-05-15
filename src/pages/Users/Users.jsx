@@ -1,4 +1,4 @@
-import { fetchUsers } from 'api/apiUsers';
+import { fetchUsers } from 'services/API/APIUsers';
 import { UserCard } from 'components/UserCard/UserCard';
 import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';

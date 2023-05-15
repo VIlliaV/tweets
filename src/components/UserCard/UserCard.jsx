@@ -2,20 +2,21 @@ import noAvatar from 'assets/noAvatar.png';
 import { Card } from './UsersCard.styled';
 import { useEffect, useRef, useState } from 'react';
 import Button from 'components/Buttons/Button/Button';
+import { getLocalFollow, setLocalFollow } from 'services/Local/local';
 
 export const UserCard = ({ userInfo }) => {
-  const { id, avatar, followers, tweets } = userInfo;
   const [follow, setFollow] = useState(false);
   const [followData, setFollowData] = useState([]);
   const firstRender = useRef(true);
 
+  const { id, avatar, followers, tweets } = userInfo;
+
   useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false;
-      const test = JSON.parse(localStorage.getItem(`isFollowing`));
-      setFollowData(test || []);
+      setFollowData(getLocalFollow() || []);
     } else {
-      localStorage.setItem(`isFollowing`, JSON.stringify(followData));
+      setLocalFollow(followData);
     }
   }, [followData]);
 
@@ -26,15 +27,10 @@ export const UserCard = ({ userInfo }) => {
 
   const handleFollow = () => {
     setFollow(!follow);
-    const local = JSON.parse(localStorage.getItem(`isFollowing`)) || [];
-    setFollowData(JSON.parse(localStorage.getItem(`isFollowing`)) || []);
     if (follow === false) {
-      setFollowData(prevState => [
-        ...prevState,
-        { ...userInfo, isFollow: true },
-      ]);
+      setFollowData([...getLocalFollow(), { ...userInfo, isFollow: true }]);
     } else {
-      const deleteFollow = local.filter(obj => obj.id !== id);
+      const deleteFollow = getLocalFollow().filter(obj => obj.id !== id);
       setFollowData(deleteFollow);
     }
   };
