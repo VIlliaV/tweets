@@ -12,8 +12,8 @@ const PAGINATION = 3;
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [cardOnPage, setCardOnPage] = useState(PAGINATION);
-  const firstRender = useRef(true);
   const [filter, setFilter] = useState(users);
+  const firstRender = useRef(true);
 
   if (!getLocalFollow()) setLocalFollow([]);
 
@@ -37,34 +37,30 @@ const Users = () => {
   const isLoadMore = filter?.length > cardOnPage && cardOnPage < filter?.length;
 
   const filterIsFollow = option => {
-    const localData = JSON.parse(localStorage.getItem('isFollowing'));
-    // console.log('🚀 ~ option.label:', option.label);
+    setCardOnPage(PAGINATION);
     switch (option.label) {
       case 'all':
         setFilter(users);
-        setCardOnPage(PAGINATION);
         break;
-      case 'follow':
-        const filterLocal = users.filter(
-          user => !localData?.find(data => data.id === user.id)
-        );
-        // console.log('🚀 ~ filterLocal:', filterLocal);
 
-        setFilter(filterLocal);
-        setCardOnPage(PAGINATION);
+      case 'follow':
+        const filterFollow = users.filter(
+          user => !getLocalFollow()?.find(data => data.id === user.id)
+        );
+        setFilter(filterFollow);
         break;
 
       case 'following':
-        // const filter = users.filter(user => user.id !== localData.id);
-        setFilter(localData);
-        setCardOnPage(PAGINATION);
+        const filterFollowing = users.filter(user =>
+          getLocalFollow()?.find(data => data.id === user.id)
+        );
+        setFilter(filterFollowing);
         break;
+
       default:
         break;
     }
   };
-
-  // console.log('filter :>> ', filter);
 
   return (
     <Container>

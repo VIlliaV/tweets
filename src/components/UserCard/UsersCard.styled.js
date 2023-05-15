@@ -9,6 +9,7 @@ import line from 'assets/lineForUserCard.png';
 </style>;
 
 export const Card = styled.li`
+  /* flex-basis: calc((100% - 70px) / 3); */
   display: flex;
   padding-top: 28px;
   flex-direction: column;
