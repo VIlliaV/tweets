@@ -10,14 +10,14 @@ export const UserCard = ({ userInfo }) => {
   const { id, avatar, followers, tweets } = userInfo;
 
   useEffect(() => {
-    const isFollowNow = getLocalFollow().some(obj => obj.id === id);
+    const isFollowNow = getLocalFollow()?.some(obj => obj.id === id);
     isFollowNow ? setFollow(true) : setFollow(false);
   }, [id]);
 
   const handleFollow = () => {
     setFollow(!follow);
     if (follow === false) {
-      setLocalFollow([...getLocalFollow(), { ...userInfo, isFollow: true }]);
+      setLocalFollow([...getLocalFollow(), { id, isFollow: true }]);
     } else {
       setLocalFollow(getLocalFollow().filter(obj => obj.id !== id));
     }

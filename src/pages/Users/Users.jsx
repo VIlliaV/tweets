@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast';
 import { Container } from './Users.styled';
 import SideMenu from 'components/SideMenu/SideMenu';
 import Button from 'components/Buttons/Button/Button';
+import { getLocalFollow, setLocalFollow } from 'services/Local/local';
 
 const PAGINATION = 3;
 
@@ -13,6 +14,8 @@ const Users = () => {
   const [cardOnPage, setCardOnPage] = useState(PAGINATION);
   const firstRender = useRef(true);
   const [filter, setFilter] = useState(users);
+
+  if (!getLocalFollow()) setLocalFollow([]);
 
   useEffect(() => {
     if (firstRender.current) {
