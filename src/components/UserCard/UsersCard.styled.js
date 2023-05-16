@@ -16,7 +16,7 @@ export const Card = styled.li`
   align-items: center;
   position: relative;
   width: 380px;
-  height: 460px;
+  /* height: 460px; */
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -34,6 +34,19 @@ export const Card = styled.li`
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
   border-radius: 20px;
 
+  &::before {
+    position: absolute;
+    content: '';
+    width: 380px;
+    height: 8px;
+    left: 0px;
+    top: 214px;
+    background: var(--second);
+    box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06),
+      inset 0px -1.71846px 3.43693px #ae7be3,
+      inset 0px 3.43693px 2.5777px #fbf8ff;
+  }
+
   & .logo {
     position: absolute;
     width: 76px;
@@ -50,7 +63,7 @@ export const Card = styled.li`
     background-image: url('${tweet}');
     background-size: cover;
   }
-  & .line {
+  /* & .line {
     margin-top: 18px;
     display: inline-block;
     width: 380px;
@@ -61,9 +74,9 @@ export const Card = styled.li`
     box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06),
       inset 0px -1.71846px 3.43693px #ae7be3,
       inset 0px 3.43693px 2.5777px #fbf8ff;
-  }
+  } */
 
-  & .circle {
+  /* & .circle {
     position: absolute;
     top: 178px;
     left: 150px;
@@ -73,18 +86,40 @@ export const Card = styled.li`
     background-image: url('${circle}');
     background-size: cover;
     overflow: hidden;
-  }
+  } */
   & .avatar {
     position: absolute;
-    top: 181px;
-    left: 155px;
-    display: inline-block;
-    width: 70px;
-    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 218px;
+    left: 180px;
+    transform: translate(-50%, -50%);
+    /* display: inline-block; */
+    width: 80px;
+    height: 80px;
+    background: #ebd8ff;
+    overflow: hidden;
+    box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
+      inset 0px -2.19582px 4.39163px #ae7be3,
+      inset 0px 4.39163px 3.29372px #fbf8ff;
+    /* border-radius: 13.1749px; */
+    border-radius: 50%;
+  }
+
+  & .avatar img {
+    width: 62px;
+    height: 62px;
+    object-fit: cover;
     border-radius: 50%;
   }
   & .tweets {
-    margin-top: 62px;
+    margin-top: 88px;
     margin-bottom: 16px;
+  }
+
+  & button {
+    margin-top: 26px;
+    margin-bottom: 36px;
   }
 `;
