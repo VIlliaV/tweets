@@ -30,12 +30,15 @@ export const UserCard = ({ userInfo, rerender }) => {
     <Card>
       <span className="logo" />
       <span className="tweet" />
-      {/* <span className="line" /> */}
       <div className="avatar">
-        <img src={avatar || noAvatar} alt="avatar" width={62} height={62} />
+        <img
+          src={avatar || noAvatar}
+          alt="avatar"
+          width={62}
+          height={62}
+          loading="lazy"
+        />
       </div>
-
-      {/* <span className="circle" /> */}
       <p className="tweets"> {tweets} TWEETS</p>
       <p className="followers">{sumFollowersAndFollow} FOLLOWERS</p>
       <Button type="button" onClick={handleFollow} data-isfollow={follow}>

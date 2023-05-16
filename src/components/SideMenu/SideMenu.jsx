@@ -2,15 +2,10 @@ import React, { useState } from 'react';
 import { Aside, StyledSelect } from './SideMenu.styled';
 
 import BackToPage from 'components/Buttons/BackToPage/BackToPage';
-
-const OPTIONS = [
-  { value: 'all', label: 'all' },
-  { value: 'follow', label: 'follow' },
-  { value: 'following', label: 'following' },
-];
+import { OPTIONS_FOLLOWER } from 'constants';
 
 const SideMenu = ({ choice }) => {
-  const [selectedOption, setSelectedOption] = useState(OPTIONS[0]);
+  const [selectedOption, setSelectedOption] = useState(OPTIONS_FOLLOWER[0]);
 
   const handleChange = option => {
     setSelectedOption(option);
@@ -23,7 +18,7 @@ const SideMenu = ({ choice }) => {
       <StyledSelect
         value={selectedOption}
         onChange={handleChange}
-        options={OPTIONS}
+        options={OPTIONS_FOLLOWER}
       />
     </Aside>
   );

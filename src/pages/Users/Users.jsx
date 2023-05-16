@@ -1,13 +1,15 @@
-import { fetchUsers } from 'services/API/APIUsers';
-import { UserCard } from 'components/UserCard/UserCard';
 import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { Container } from './Users.styled';
+
+import { PAGINATION } from 'constants';
+import { changeLocalFollow, fetchUsers, getLocalFollow } from 'services';
+
+import { UserCard } from 'components/UserCard/UserCard';
 import SideMenu from 'components/SideMenu/SideMenu';
 import Button from 'components/Buttons/Button/Button';
-import { getLocalFollow, changeLocalFollow } from 'services/Local/local';
 
-const PAGINATION = 3;
+import { Container } from './Users.styled';
+import { OPTIONS_FOLLOWER } from 'constants';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -15,12 +17,11 @@ const Users = () => {
   const [filter, setFilter] = useState(users);
 
   const firstRender = useRef(true);
-  const optionFilter = useRef('all');
-
-  if (!getLocalFollow()) changeLocalFollow([]);
+  const optionFilter = useRef(OPTIONS_FOLLOWER[0].label);
 
   useEffect(() => {
     if (firstRender.current) {
+      changeLocalFollow([]);
       firstRender.current = false;
       fetchUsers()
         .then(response => {
@@ -42,18 +43,18 @@ const Users = () => {
     optionFilter.current = option;
     setCardOnPage(PAGINATION);
     switch (option.label) {
-      case 'all':
+      case OPTIONS_FOLLOWER[0].label:
         setFilter(users);
         break;
 
-      case 'follow':
+      case OPTIONS_FOLLOWER[1].label:
         const filterFollow = users.filter(
           user => !getLocalFollow()?.find(data => data.id === user.id)
         );
         setFilter(filterFollow);
         break;
 
-      case 'following':
+      case OPTIONS_FOLLOWER[2].label:
         const filterFollowing = users.filter(user =>
           getLocalFollow()?.find(data => data.id === user.id)
         );
@@ -66,7 +67,7 @@ const Users = () => {
   };
 
   const rerenderPageForFilter = () => {
-    if (optionFilter.current.value === 'all') return;
+    if (optionFilter.current.label === OPTIONS_FOLLOWER[0].label) return;
     filterIsFollow(optionFilter.current);
   };
 

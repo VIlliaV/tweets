@@ -1,22 +1,20 @@
 import styled from 'styled-components';
 import tweet from 'assets/tweet.png';
 import logo from 'assets/Logo.png';
-import circle from 'assets/circleForAvatar2.png';
-import line from 'assets/lineForUserCard.png';
+
 <style>
   @import
   url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,600&display=swap');
 </style>;
 
 export const Card = styled.li`
-  /* flex-basis: calc((100% - 70px) / 3); */
   display: flex;
   padding-top: 28px;
   flex-direction: column;
   align-items: center;
   position: relative;
   width: 380px;
-  /* height: 460px; */
+
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -63,30 +61,7 @@ export const Card = styled.li`
     background-image: url('${tweet}');
     background-size: cover;
   }
-  /* & .line {
-    margin-top: 18px;
-    display: inline-block;
-    width: 380px;
-    height: 8px;
-    background-image: url('${line}');
-    background-size: cover;
-    background: var(--second);
-    box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06),
-      inset 0px -1.71846px 3.43693px #ae7be3,
-      inset 0px 3.43693px 2.5777px #fbf8ff;
-  } */
 
-  /* & .circle {
-    position: absolute;
-    top: 178px;
-    left: 150px;
-    display: inline-block;
-    width: 80px;
-    height: 80px;
-    background-image: url('${circle}');
-    background-size: cover;
-    overflow: hidden;
-  } */
   & .avatar {
     position: absolute;
     display: flex;
@@ -103,7 +78,7 @@ export const Card = styled.li`
     box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
       inset 0px -2.19582px 4.39163px #ae7be3,
       inset 0px 4.39163px 3.29372px #fbf8ff;
-    /* border-radius: 13.1749px; */
+
     border-radius: 50%;
   }
 
