@@ -9,9 +9,11 @@ import SideMenu from 'components/SideMenu/SideMenu';
 import Button from 'components/Buttons/Button/Button';
 
 import { Container } from './Users.styled';
+import { Loader } from 'components/Loader/Loader';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const [pending, setPending] = useState(true);
   const [cardOnPage, setCardOnPage] = useState(PAGINATION);
   const [filter, setFilter] = useState(users);
 
@@ -26,13 +28,14 @@ const Users = () => {
         .then(response => {
           const results = response;
           if (!results.length)
-            throw new Error('немає ні одного юзера на сервері');
+            throw new Error('there is no user on the server');
           setUsers(results);
           setFilter(results);
         })
         .catch(error => {
           toast.error(`${error.message}`);
-        });
+        })
+        .finally(setPending(false));
     }
   }, []);
 
@@ -74,20 +77,27 @@ const Users = () => {
   return (
     <Container>
       <SideMenu choice={filterIsFollow} />
+
       <div className="users_cards">
-        <ul>
-          {filter?.slice(0, cardOnPage).map(user => (
-            <UserCard
-              key={user.id}
-              userInfo={user}
-              rerender={rerenderPageForFilter}
-            />
-          ))}
-        </ul>
-        {isLoadMore && (
-          <Button onClick={() => setCardOnPage(cardOnPage + PAGINATION)}>
-            LOAD MORE
-          </Button>
+        {pending ? (
+          <Loader />
+        ) : (
+          <>
+            <ul>
+              {filter?.slice(0, cardOnPage).map(user => (
+                <UserCard
+                  key={user.id}
+                  userInfo={user}
+                  rerender={rerenderPageForFilter}
+                />
+              ))}
+            </ul>
+            {isLoadMore && (
+              <Button onClick={() => setCardOnPage(cardOnPage + PAGINATION)}>
+                LOAD MORE
+              </Button>
+            )}
+          </>
         )}
       </div>
     </Container>
