@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
-import { PAGINATION } from 'constants';
+import { PAGINATION, OPTIONS_FOLLOWER } from 'constants';
 import { changeLocalFollow, fetchUsers, getLocalFollow } from 'services';
 
 import { UserCard } from 'components/UserCard/UserCard';
@@ -9,7 +9,6 @@ import SideMenu from 'components/SideMenu/SideMenu';
 import Button from 'components/Buttons/Button/Button';
 
 import { Container } from './Users.styled';
-import { OPTIONS_FOLLOWER } from 'constants';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
