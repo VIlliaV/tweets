@@ -40,8 +40,9 @@ const Users = () => {
   const isLoadMore = filter?.length > cardOnPage && cardOnPage < filter?.length;
 
   const filterIsFollow = option => {
+    if (optionFilter.current !== option) setCardOnPage(PAGINATION);
     optionFilter.current = option;
-    setCardOnPage(PAGINATION);
+
     switch (option.label) {
       case OPTIONS_FOLLOWER[0].label:
         setFilter(users);

@@ -6,16 +6,10 @@ export const Aside = styled.aside`
   left: 0;
   padding: 15px;
   min-width: 163.7px;
-
-  & Button {
-    width: auto;
-    margin-bottom: 100px;
-  }
 `;
 
 export const StyledSelect = styled(Select)`
   padding: 14px 8px;
-
   margin-top: 20px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
@@ -24,7 +18,6 @@ export const StyledSelect = styled(Select)`
   line-height: 22px;
   color: var(--primary);
   background: var(--second);
-  border: 2px outset var(--primary);
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10.3108px;
   cursor: pointer;

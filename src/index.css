@@ -2,7 +2,8 @@
   --primary: rgb(55, 55, 55);
   --second: rgb(235, 216, 255);
   --shadow: rgb(235, 216, 255, 0.5);
-  --button: rgba(87, 54, 163, 1);
+  --back_primary: rgba(87, 54, 163, 1);
+  --active: rgb(92, 211, 168);
 }
 
 body {
@@ -12,7 +13,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background: rgb(174, 123, 227); */
 }
 
 code {
@@ -51,4 +51,5 @@ img {
 
 a {
   text-decoration: none;
+  color: inherit;
 }

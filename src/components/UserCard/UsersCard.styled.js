@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import tweet from 'assets/tweet.png';
-import logo from 'assets/Logo.png';
-
-<style>
-  @import
-  url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,600&display=swap');
-</style>;
+import logo from 'assets/logo.png';
 
 export const Card = styled.li`
   display: flex;
@@ -14,14 +9,12 @@ export const Card = styled.li`
   align-items: center;
   position: relative;
   width: 380px;
-
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
   text-transform: uppercase;
-
   color: var(--second);
   background: linear-gradient(
     114.99deg,
@@ -49,10 +42,10 @@ export const Card = styled.li`
     position: absolute;
     width: 76px;
     height: 22px;
-    background-image: url('${logo}');
-    background-size: cover;
     top: 20px;
     left: 20px;
+    background-image: url('${logo}');
+    background-size: cover;
   }
   & .tweet {
     display: inline-block;
@@ -70,10 +63,9 @@ export const Card = styled.li`
     top: 218px;
     left: 180px;
     transform: translate(-50%, -50%);
-    /* display: inline-block; */
     width: 80px;
     height: 80px;
-    background: #ebd8ff;
+    background: var(--second);
     overflow: hidden;
     box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
       inset 0px -2.19582px 4.39163px #ae7be3,
@@ -87,6 +79,7 @@ export const Card = styled.li`
     height: 62px;
     object-fit: cover;
     border-radius: 50%;
+    background-color: var(--back_primary);
   }
   & .tweets {
     margin-top: 88px;
