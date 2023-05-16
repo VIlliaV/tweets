@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import tweet from 'assets/tweet.png';
-import logo from 'assets/logo.png';
+import nologo from 'assets/nologo.png';
 
 export const Card = styled.li`
   display: flex;
@@ -44,7 +44,7 @@ export const Card = styled.li`
     height: 22px;
     top: 20px;
     left: 20px;
-    background-image: url('${logo}');
+    background-image: url('${nologo}');
     background-size: cover;
   }
   & .tweet {
