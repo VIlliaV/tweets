@@ -2,7 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
 import { PAGINATION, OPTIONS_FOLLOWER } from 'constants';
-import { changeLocalFollow, fetchUsers, getLocalFollow } from 'services';
+import {
+  changeLocalFollow,
+  fetchUsers,
+  getLocalFollow,
+  smoothScroll,
+} from 'services';
 
 import { UserCard } from 'components/UserCard/UserCard';
 import SideMenu from 'components/SideMenu/SideMenu';
@@ -38,6 +43,10 @@ const Users = () => {
         .finally(setPending(false));
     }
   }, []);
+
+  useEffect(() => {
+    smoothScroll(600);
+  }, [cardOnPage]);
 
   const isLoadMore = filter?.length > cardOnPage && cardOnPage < filter?.length;
 
